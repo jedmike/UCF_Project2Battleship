@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>A Very Simple Battleship Game</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+
+    <h1>Battleship</h1>
+
+    <p>Click the board to fire at a ship. Try to sink every battleship!</p>
+    <form>
+        <label for="fname">Your Name</label>
+        <input type="text" id="fname" name="fname">
+        <br>
+        <label for="fname">Opponent Name</label>
+        <input type="text" id="fname" name="fname">
+    </form>
+
+
+    <h3>Firing Grid</h3>
+
+    <div id="gameboard">
+
+    </div>
+
+    <div class="msgbox">
+        <!-- <ul id="events">
+            <li>Deploy your ships to play Game</li>
+        </ul> -->
+        <input id="comm" type=text>
+    </div>
+    <h3>Fleet Deployement Grid</h3>
+    <button type="button" onclick="deployShips()">Deploy</button>
+
+
+    <div id="gameboard2">
+
+    </div>
+
+
+
+
+    <script type="text/javascript" src="./gridengine.js"></script>
+
+</body>
+
+</html>
