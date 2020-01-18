@@ -62,7 +62,7 @@ function logEvent(event) {
     console.log("................................")
     console.log(event);
     console.log(event.target.id);
-    event.target.style.background = 'green';
+    event.target.style.background = 'red';
     console.log("................................")
 }
 //function for deploy ships button, Placeholder
