@@ -1,6 +1,6 @@
 const http = require("http");
 const express = require("express");
-// const socketio = require("socket.io");
+const socketio = require("socket.io");
 
 const app = express();
 
@@ -12,11 +12,19 @@ app.use(express.static(clientPath));
 
 const server = http.createServer(app);
 
-// const io = socket(server);
+const io = socketio(server);
 
-// io.on('connection', (sock) => {
-//     sock.emit('message', 'u r conneced ');
-// });
+io.on('connection', (sock) => {
+    console.log('A player connected');
+    sock.emit('message', 'Hi, You are connected ');
+    console.log('message sent');
+
+    sock.on('message', (text) => {
+        io.emit('message', (text));
+        console.log('Allmessage sent');
+    });
+
+});
 
 server.on("error", (err) => {
     console.error("Server error:", err);

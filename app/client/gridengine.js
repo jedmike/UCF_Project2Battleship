@@ -1,3 +1,5 @@
+// import { write } from "fs";
+
 var rows = 10;
 var cols = 10;
 var squareSize = 25;
@@ -25,12 +27,12 @@ function playerGameGrid() {
             square.style.left = leftPosition + 'px';
         }
     }
-}
+};
 gameBoardContainer.addEventListener("click", logEvent, false);
 
 function logEvent() {
     console.log(event);
-}
+};
 
 playerFleetGrid();
 
@@ -52,7 +54,7 @@ function playerFleetGrid() {
             square.style.left = leftPosition + 'px';
         }
     }
-}
+};
 gameBoardContainer2.addEventListener("click", logEvent, false);
 // console.log("click");
 
@@ -68,4 +70,36 @@ function logEvent(event) {
 //function for deploy ships button, Placeholder
 function deployShips() {
     console.log("Ships Deployed");
-}
+};
+
+
+
+
+
+const writeEvent = (text) => {
+    // <ul> element
+    const parent = document.querySelector('#events');
+
+    // <li> element
+    const el = document.createElement('li');
+    el.innerHTML = text;
+
+    parent.appendChild(el);
+};
+
+const onFormSubmitted = (e) => {
+    e.preventDefault();
+    const input = document.querySelector('#chat');
+    const text = input.value;
+    input.value = '';
+
+    sock.emit('message', text);
+
+};
+
+writeEvent('Welcome to chat!');
+
+const sock = io();
+sock.on('message', writeEvent);
+
+document.querySelector('#chat-form').addEventListener('submit', onFormSubmitted);
