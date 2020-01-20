@@ -1,19 +1,21 @@
 body {
+    background-color: blanchedalmond;
     margin: 30px;
     width: 100%;
     max-width: 1050px;
 }
 
-h1 {
+
+/* h1 {
     font-size: 3em;
     font-family: 'Helvetica', 'Arial', 'Sans-Serif';
 }
 
 #comm {
     border: 50x, black;
-    /* background: yellow; */
+    background: yellow;
     padding: 5px;
-}
+} */
 
 
 /* p,
@@ -30,14 +32,6 @@ input {
     margin: 0 0 0 8;
     width: 250px;
     height: 250px;
-}
-
-#sep {
-    position: relative;
-    margin: 0 0 0 0;
-    padding: 10px 10px 10px 0px;
-    width: 250px;
-    height: 50px;
 }
 
 #gameboard2 {
@@ -75,4 +69,38 @@ input {
     border: 3px solid #ddd;
     width: 25px;
     height: 25px;
+}
+
+#chat-form {
+    background-color: blanchedalmond;
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 10px 10px 10px 0px;
+    width: 250px;
+    height: 50px;
+}
+
+.chat-wrapper {
+    padding: 10px;
+}
+
+.chat-wrapper form {
+    display: flex;
+}
+
+.chat-wrapper form input {
+    font-size: 1.0rem;
+    margin: 0 10px 0 0;
+    padding: 0 5px;
+    flex-grow: 1;
+}
+
+.chat-wrapper form button {
+    width: 80px;
+}
+
+.button-wrapper {
+    display: flex;
+    padding: 10px 50px;
+    justify-content: space-evenly;
 }

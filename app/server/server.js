@@ -1,6 +1,7 @@
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
+const Battleship = require('./battleship.js');
 
 const app = express();
 

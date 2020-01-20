@@ -28,11 +28,7 @@ function playerGameGrid() {
         }
     }
 };
-gameBoardContainer.addEventListener("click", logEvent, false);
 
-function logEvent() {
-    console.log(event);
-};
 
 playerFleetGrid();
 
@@ -72,8 +68,13 @@ function deployShips() {
     console.log("Ships Deployed");
 };
 
+//Event listners
 
+gameBoardContainer.addEventListener("click", logEvent, false);
 
+function logEvent() {
+    console.log(event);
+};
 
 
 const writeEvent = (text) => {
