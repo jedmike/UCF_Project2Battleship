@@ -1,9 +1,10 @@
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
-const Battleship = require('./battleship.js');
-
+const Btl = require('./btl.js');
 const app = express();
+var port = 3000;
+
 
 const clientPath = '../client/';
 console.log(clientPath);
@@ -15,22 +16,40 @@ const server = http.createServer(app);
 
 const io = socketio(server);
 
-io.on('connection', (sock) => {
-    console.log('A player connected');
-    sock.emit('message', 'Hi, You are connected ');
-    console.log('message sent');
+let waitingPlayer = null;
 
-    sock.on('message', (text) => {
-        io.emit('message', (text));
-        console.log('Allmessage sent');
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//Minimum socket working connectionn
+// io.on('connection', (socket) => {
+//     new Btl(waitingPlayer, socket);
+//     console.log('A player connected');
+//     console.log((new Date().toISOString()) + ' ID ' + socket.id + ' connected.');
+//     socket.emit('message', 'You are connected ');
+// })
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+io.on('connection', (socket) => {
+    console.log('beep');
+    if (waitingPlayer) {
+        console.log('beep beep');
+        new Btl(waitingPlayer, socket);
+        waitingPlayer = null;
+    } else {
+        waitingPlayer = socket;
+        waitingPlayer.emit('message', 'Waiting for an opponent');
+    }
+
+
+    socket.on('message', (text) => {
+        io.emit('message', text);
     });
-
 });
+
 
 server.on("error", (err) => {
     console.error("Server error:", err);
 });
 
-server.listen(3000, () => {
-    console.log("Battleship Started on 3000");
+server.listen(port, () => {
+    console.log("Battleship Started on:" + port);
 });

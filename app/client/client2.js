@@ -1,7 +1,10 @@
+// import { write } from "fs";
+
 var rows = 10;
 var cols = 10;
 var squareSize = 25;
 var gameBoardContainer = document.getElementById("gameboard");
+var gameBoardContainer2 = document.getElementById("gameboard2");
 
 // get the container element
 playerGameGrid();
@@ -15,9 +18,7 @@ function playerGameGrid() {
             var square = document.createElement("div");
             gameBoardContainer.appendChild(square);
             // give each div element a unique id based on its row and column, like "s00"
-            square.className = "firesquare";
             square.id = 'f' + j + i;
-
             // set each grid square's coordinates: multiples of the current row or column number
             var topPosition = j * squareSize;
             var leftPosition = i * squareSize;
@@ -26,7 +27,31 @@ function playerGameGrid() {
             square.style.left = leftPosition + 'px';
         }
     }
-}
+};
+
+
+playerFleetGrid();
+
+function playerFleetGrid() {
+    var gameBoardContainer2 = document.getElementById("gameboard2");
+    // make the grid columns and rows
+    for (m = 0; m < cols; m++) {
+        for (n = 0; n < rows; n++) {
+            // create a new div HTML element for each grid square and make it the right size
+            var square = document.createElement("div");
+            gameBoardContainer2.appendChild(square);
+            // give each div element a unique id based on its row and column, like "s00"
+            square.id = 's' + n + m;
+            // set each grid square's coordinates: multiples of the current row or column number
+            var topPosition = n * squareSize;
+            var leftPosition = m * squareSize;
+            // use CSS absolute positioning to place each grid square on the page
+            square.style.top = topPosition + 'px';
+            square.style.left = leftPosition + 'px';
+        }
+    }
+};
+
 
 
 //function that logs the event object
@@ -42,24 +67,23 @@ function deployShips() {
     console.log("Ships Deployed");
 };
 
-function sendSquare(event) {
-    var gbId = event.target.id
-    console.log("---------------------")
-    console.log(event);
-    console.log(gbId);
-    console.log(event.target.className);
-    console.log("---------------------")
-    socket.emit('square', gbId);
-    console.log('square emitted');
-}
 
+//Event listners
+// gameBoardContainer.addEventListener("click", fireTorpedo, false);
+gameBoardContainer.addEventListener("click", logEvent, false);
+gameBoardContainer2.addEventListener("click", logEvent, false);
+// console.log("click");
 
-
-//Event listner
-
-
-gameBoardContainer.addEventListener("click", sendSquare, false);
 // gameBoardContainer.addEventListener("click", logEvent, false);
+
+// function logEvent() {
+//     console.log(event);
+// };
+
+// set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
+
+
+
 
 const writeEvent = (text) => {
     // <ul> element
@@ -78,13 +102,13 @@ const onFormSubmitted = (e) => {
     const text = input.value;
     input.value = '';
 
-    socket.emit('message', text);
+    sock.emit('message', text);
 
 };
 
 writeEvent('Welcome to chat!');
 
-const socket = io();
-socket.on('message', writeEvent);
+const sock = io();
+sock.on('message', writeEvent);
 
 document.querySelector('#chat-form').addEventListener('submit', onFormSubmitted);
