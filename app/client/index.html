@@ -39,21 +39,26 @@
 
     </div>
 
-    <!-- <div class="msgbox">
-        <ul id="events">
-            <li>Deploy your ships to play Game</li>
-        </ul>
-        <input id="comm" type=text>
-    </div> -->
-    <h3>Fleet Deployement Grid</h3>
-    <button type="button" onclick="deployShips()">Deploy</button>
 
+    <h3>Fleet Deployement Grid</h3>
+    <button type="button" onclick="deployShips()" id="dplbutton">Deploy</button>
+    <div id="middle">
+
+    </div>
 
     <div id="gameboard2">
 
     </div>
 
+    <h4>Fleet Ships</h4>
 
+    <div class="btn-group">
+        <button>Carrier</button>
+        <button>Battleship</button>
+        <button>Cruiser</button>
+        <button>Submarine</button>
+        <button>Destroyer</button>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="./client.js"></script>

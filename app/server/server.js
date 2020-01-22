@@ -1,38 +1,32 @@
+//********************************************************* */
+//variable, constants
+
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
-const Btl = require('./btl.js');
+const BattleshipGame = require('./BattleshipGame.js');
 const app = express();
 var port = 3000;
-
-
 const clientPath = '../client/';
-console.log(clientPath);
+const server = http.createServer(app);
+const io = socketio(server);
+
+//********************************************************* */
+//Server start
+
 console.log('Serving static from ${clientPath}');
 
 app.use(express.static(clientPath));
 
-const server = http.createServer(app);
 
-const io = socketio(server);
 
 let waitingPlayer = null;
 
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-//Minimum socket working connectionn
-// io.on('connection', (socket) => {
-//     new Btl(waitingPlayer, socket);
-//     console.log('A player connected');
-//     console.log((new Date().toISOString()) + ' ID ' + socket.id + ' connected.');
-//     socket.emit('message', 'You are connected ');
-// })
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
 io.on('connection', (socket) => {
-    console.log('beep');
+    // console.log('beep');
     if (waitingPlayer) {
-        console.log('beep beep');
-        new Btl(waitingPlayer, socket);
+        // console.log('beep beep');
+        new BattleshipGame(waitingPlayer, socket);
         waitingPlayer = null;
     } else {
         waitingPlayer = socket;
@@ -51,5 +45,29 @@ server.on("error", (err) => {
 });
 
 server.listen(port, () => {
-    console.log("Battleship Started on:" + port);
+    console.log("Battleship Game started on port:" + port);
 });
+
+//codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+//connect to Battleship.db
+//initialize it
+//codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+
+//codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+//listen for Player name
+//listen for Oponent name
+//add to database
+//      log moves and grids for replay, persistence
+//codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//Minimum socket working connectionn
+// io.on('connection', (socket) => {
+//     new Btl(waitingPlayer, socket);
+//     console.log('A player connected');
+//     console.log((new Date().toISOString()) + ' ID ' + socket.id + ' connected.');
+//     socket.emit('message', 'You are connected ');
+// })
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+// console.log(clientPath);
