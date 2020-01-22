@@ -49,11 +49,13 @@ server.listen(port, () => {
 });
 
 //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+//Server issue 1:
 //connect to Battleship.db
 //initialize it
 //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
 
 //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+//Server issue 2:
 //listen for Player name
 //listen for Oponent name
 //add to database

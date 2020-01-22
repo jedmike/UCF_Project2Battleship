@@ -83,6 +83,7 @@ const deployShips = () => {
     console.log("Ships Deployed");
 };
 
+//Client issue 1:
 //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
 //
 //Need to create code which after sending the firesquare
@@ -94,26 +95,26 @@ const deployShips = () => {
 
 // send player grid selection to game
 const sendTurn = (event) => {
-    var gbId = event.target.id
-    console.log("----------------")
-    console.log(event);
-    event.target.style.background = 'red';
-    // console.log(event);
-    console.log(gbId);
-    console.log(event.target.className);
-    console.log("------------------")
-    socket.emit('turn', gbId);
-}
-
-//codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
-//
-//Need to create code that prompst a player to enter ship location on grid
-//Click the correct button on page (diff color buttons per ship? ch sq color)
-//Deploy the ships
-//Generate an object for each ship which contains:
-//(type,number of squares(for hits,grid cell location array,hits, sunk statis )
-//
-//codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+        var gbId = event.target.id
+        console.log("----------------")
+        console.log(event);
+        event.target.style.background = 'red';
+        // console.log(event);
+        console.log(gbId);
+        console.log(event.target.className);
+        console.log("------------------")
+        socket.emit('turn', gbId);
+    }
+    //Client issue 2:
+    //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
+    //
+    //Need to create code that prompst a player to enter ship location on grid
+    //Click the correct button on page (diff color buttons per ship? ch sq color)
+    //
+    //Generate an object for each ship which contains:
+    //(type,number of squares(for hits,grid cell location array,hits, sunk statis )
+    //on Deploy, sends ship objects to game
+    //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
 
 
 //send ship Object to game

@@ -51,7 +51,7 @@ class BattleshipGame {
 
     //*********************************************************/
 
-
+    //Battleship issue 1:
     //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
     //Psuedocode of what needs to happen next
     //create an array for each Player
@@ -72,13 +72,22 @@ class BattleshipGame {
     // //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     // // 
     //listen for ship objects from each player
+    //prototype constructor
+    // let shipex = {
+    //     type: "battleship",
+    //     nosq: 4,
+    //     locations: ["s00", "s01", "s02", "s03"],
+    //     hits: [],
+    //     sunk: false,
+    // };
+
     //check if already used, alert
     //push ship square locations into array
 
     //send Game Starts
     //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
 
-
+    //Battleship issue :
     //codeNeededcodeNeededcodeNeededcodeNeededcodeNeededcodeNeeded//
     //send player 1 your turn
     //listen for fire sq
